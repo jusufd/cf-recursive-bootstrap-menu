@@ -132,7 +132,7 @@ component accessors="true" extends="models.abstract.BaseGateway"{
 	/**
 	* I return the latest sort order number 
 	*/
-	public numeric function lastSortOrder( required numeric parentId ) {
+	public numeric function lastSortOrder( required any parentId = '' ) {
 		var local = {};
 		local.sqlStatement = 'from Category where 1=1';
 
