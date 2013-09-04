@@ -1,0 +1,120 @@
+body {
+  padding-top: 41px;
+}
+
+.theme-dropdown .dropdown-menu {
+  display: block;
+  position: static;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+#footer {
+	height: 60px;
+}
+#footer p {line-height:50px;}
+#footer {
+	background-color: #f5f5f5;
+}
+.failure-message {
+	border: 1px solid #EB5339;
+	background-color: #FCCAC2;
+	color: #AC260F;
+}
+.warning-message {
+	border: 1px solid #FFC237;
+	background-color: #FFEAA8;
+	color: #826200;
+}
+.success-message {
+	border: 1px solid #99C600;
+	background-color: #EFFFB9;
+	color: #3C5A01;
+}
+.information-message {
+	border: 1px solid #418ACC;
+	background-color: #D0E4F4;
+	color: #AC260F;
+}
+.lightbulb-message {
+	border: 1px solid #D3A350;
+	background-color: #FEF0CB;
+	color: #835F21;
+}
+.messages-message {
+	border: 1px solid #42B4FF;
+	background-color: #9DDFFF;
+	color: #835F21;
+}
+
+.notification {
+	height: auto;
+	cursor: pointer;
+	clear: both;
+	margin: 8px 0px 8px 0px;
+	padding: 10px 25px 10px 60px;
+	-moz-border-radius:4px;
+	-webkit-border-radius: 4px;
+}
+.notification strong 	{ margin-right: 5px;}
+.notification p 		{
+	font-size: 16px;
+	padding: 0px;
+	margin: 0px;
+	color: #333333;
+	width:100%;
+}
+.success {
+	background-image: url(../img/accept.png);
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-color: #EFFFB9;
+	color: #3C5A01;
+}
+.warning {
+	background-image: url(../img/error.png);
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-color: #FFEAA8;
+	color: #826200;
+}
+.failure {
+	background-image: url(../img/exclamation.png);
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-color: #FCCAC2;
+	color: #AC260F;
+}
+.information {
+	background-image: url(../img/information.png);
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-color: #D0E4F4;
+	color: #235685;
+}
+.lightbulb {
+	background-image: url(../img/lightbulb.png);
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-color: #FEF0CB;
+	color: #835F21;
+}
+.messages {
+	background-image: url(../img/email.png);
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-color: #9DDFFF;
+	color: #835F21;
+}
+p.error-message {color:#AC260F;padding:0;margin:0;}
+.separator { padding: 10px 0; }
+.separator.bottom { padding: 0 0 10px; }
+.category-section {margin-top:20px;} 
+
+#modalCategory {width:640px;}
+#modalCategory .modal-body {max-height:800px;max-width:600px;}
+#modalCategory .input-xx {width:400px;}
+#modalCategory .input-xx-textarea {width:390px;}
