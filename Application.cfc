@@ -45,7 +45,7 @@ component extends="org.fw1.framework"{
 		cfclocation = this.mappings[ "/models" ], 
 		eventhandling = true, 
 		eventhandler = "models.aop.GlobalEventHandler", 
-		logsql = structkeyexists(this,'development'),
+		logsql = YesNoFormat(structkeyexists(this,'development')),
 		dialect = "mysql"
 	};	
 	this.ormsettings.dbcreate = "update";
@@ -65,7 +65,7 @@ component extends="org.fw1.framework"{
 		error = 'go.error',
 		usingSubsystems = false,
 		maxNumContextsPreserved = 1,
-		reloadApplicationOnEveryRequest = structkeyexists(this,'development')
+		reloadApplicationOnEveryRequest = YesNoFormat(structkeyexists(this,'development'))
 	};
 
 	void function setupsession() {

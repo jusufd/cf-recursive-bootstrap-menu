@@ -230,7 +230,10 @@ component accessors="true" extends="models.abstract.BaseService"{
 			if (!isnull(newParent.getId())) 
 				Category.setParents(newParent);
 			if (arguments.properties.Id==-1 || diffParent) {
-				var lastSortOrder = variables.CategoryGateway.lastSortOrder(newParent.getId());
+				if (isnull(newParent.getId()))
+					var lastSortOrder = variables.CategoryGateway.lastSortOrder(0);
+				else 
+					var lastSortOrder = variables.CategoryGateway.lastSortOrder(newParent.getId());
 				Category.setSortOrder(lastSortOrder+1);
 				if (isnull(newParent.getSection()))
 					Category.setSection('go');
