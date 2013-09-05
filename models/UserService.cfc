@@ -91,6 +91,8 @@ component accessors="true" extends="models.abstract.BaseService"{
 			currentSesssion.setUpdated(now());
 			if (len(arguments.remember))
 				currentSesssion.setEmail(argUser.getEmail());
+			else 
+			 	currentSesssion.setEmail(javacast('null',''));
 			entitysave(currentSesssion);
 			if (structkeyexists(arguments.properties,'goto')) {
 				structinsert(result,'goto',deserializeGoto(arguments.properties.goto));

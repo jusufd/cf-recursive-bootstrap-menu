@@ -20,6 +20,12 @@ component accessors="true" extends="models.abstract.BaseService"{
 	public UserSession function getCurrentSession() {
 		return variables.UserSessionGateway.getUserSession(trim(session.sessionid));
 	}
+	/**
+	 * I am checking if the user okay to go to secure area 
+	*/
+	public boolean function okToGetIn(required struct theUserSession) {
+		return arguments.theUserSession.hasUser();	
+	}
 
 
 }

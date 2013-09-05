@@ -3,6 +3,7 @@ component accessors="true" extends="models.abstract.Base" {
 	// DI
 	property name="config" setter="true" getter="false";
 	property name="MigrationService" setter="true" getter="false";
+	property name="UserSessionService" setter="true" getter="false";
 
 	public void function before(required struct rc) {
 		super.before(rc,false,'go');
@@ -23,17 +24,17 @@ component accessors="true" extends="models.abstract.Base" {
 		param name="rc.btn" default="";
 		param name="rc.users_login" default={};
 		var local = {};
-		if (len(rc.UserSession.getEmail())) {
-			param name="rc.remember" default="remember-me";
+		if (len(rc.UserSession.getEmail())) 
 			param name="rc.Email" default="#rc.UserSession.getEmail()#";
-		} else { 
-			param name="rc.remember" default="";
+		else  
 			param name="rc.Email" default="";
-		}
 		rc.nofooter = true;
 		local.reqField=['Email','Password'];
 		rc.e = initErrField(reqField=local.reqField);
-		if (!rc.userSession.hasUser()) {
+		if (!structkeyexists(rc,'remember'))
+			rc.remember = '';
+		local.okToGetIn = variables.UserSessionService.okToGetIn(rc.UserSession);
+		if (!local.okToGetIn) {
 			rc.users_login = variables.userService.login({
 				"Email" = rc.Email,
 				"Password" = rc.Password,

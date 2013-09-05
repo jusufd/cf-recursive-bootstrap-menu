@@ -25,9 +25,10 @@ component accessors="true"{
 		rc.UserSession = variables.UserSessionService.saveUserSession({"Id" = trim(session.sessionid)});
 		// if controller is secured redirect to login //
 		if (arguments.secureController) {
-			if (!rc.UserSession.hasUser()) {
+			local.okToGetIn = variables.UserSessionService.okToGetIn(rc.UserSession);
+			if (!local.okToGetIn) {
 				local.gotoString = gotoString(rc = arguments.rc);
-				variables.fw.redirect(action='go.login',querystring='&?goto=#local.gotoString#');	
+				variables.fw.redirect(action='go.login',querystring='&?goto=#local.gotoString#');
 			}
 		}
 		// request context for assets //
