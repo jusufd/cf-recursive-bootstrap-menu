@@ -27,7 +27,7 @@ component extends="org.fw1.framework"{
 
 	// prevent bots creating lots of sessions
 	if (structKeyExists(cookie,"CFTOKEN" )) 
-		this.sessiontimeout = createTimeSpan( 16384, 0, 0, 0 );
+		this.sessiontimeout = createTimeSpan( 0, 0, 30, 0 );
 	else 
 		this.sessiontimeout = createTimeSpan( 0, 0, 0, 1 );
 	
