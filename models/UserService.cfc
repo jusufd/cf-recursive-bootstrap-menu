@@ -90,9 +90,16 @@ component accessors="true" extends="models.abstract.BaseService"{
 			currentSesssion.setWrongLogin(0);
 			currentSesssion.setUpdated(now());
 			if (len(arguments.remember))
-				currentSesssion.setEmail(argUser.getEmail());
+				if (structkeyexists(cookie,'email'))
+					cookie.email = argUser.getEmail();
+				else 
+					structinsert(cookie,'email',argUser.getEmail());
 			else 
-			 	currentSesssion.setEmail(javacast('null',''));
+				if (structkeyexists(cookie,'email'))
+					structdelete(cookie,'email');
+			// 	currentSesssion.setEmail(argUser.getEmail());
+			// else 
+			//  	currentSesssion.setEmail(javacast('null',''));
 			entitysave(currentSesssion);
 			if (structkeyexists(arguments.properties,'goto')) {
 				structinsert(result,'goto',deserializeGoto(arguments.properties.goto));

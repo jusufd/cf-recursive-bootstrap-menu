@@ -24,10 +24,14 @@ component accessors="true" extends="models.abstract.Base" {
 		param name="rc.btn" default="";
 		param name="rc.users_login" default={};
 		var local = {};
-		if (len(rc.UserSession.getEmail())) 
-			param name="rc.Email" default="#rc.UserSession.getEmail()#";
-		else  
+		if (structkeyexists(cookie,'email'))
+			param name="rc.Email" default="#cookie.email#";
+		else 
 			param name="rc.Email" default="";
+		// if (len(rc.UserSession.getEmail())) 
+		// 	param name="rc.Email" default="#rc.UserSession.getEmail()#";
+		// else  
+		// 	param name="rc.Email" default="";
 		rc.nofooter = true;
 		local.reqField=['Email','Password'];
 		rc.e = initErrField(reqField=local.reqField);

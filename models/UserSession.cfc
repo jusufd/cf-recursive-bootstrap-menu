@@ -7,7 +7,6 @@ component table='UserSessions' persistent='true' hint="User Session Table" {
 	property name='LockEnd' ormtype='timestamp'; 
 	property name='Created' ormtype='timestamp';
 	property name='Updated' ormtype='timestamp';
-	property name='Email' length='255';
 	property name="User" fieldtype="many-to-one" cfc="User" fkcolumn="UserFk";
 	
 	/**
