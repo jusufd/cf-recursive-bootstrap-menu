@@ -91,10 +91,9 @@ categorygen.controller('ProductCategoryListController',['$scope','$window','Prod
             	params.ProductCategory = 'Yes';	
             else
             	params.ProductCategory = 'No';
-            // if (categorySelection=='menu') 
-            // 	params[selection] = '';
+            if (selection!='')
+            	params[selection] = true;
             params.json = '';
-            console.log(params);
 			result = ProductCategories.saveCategory(params);
 			$scope.category = result;
 		};
