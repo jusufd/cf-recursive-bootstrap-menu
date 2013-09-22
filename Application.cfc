@@ -8,20 +8,16 @@ component extends="org.fw1.framework"{
 	this.setclientcookies = false;
 
 	// environment Settings
-	this.remoteAddr = {
-		'development' = 'dev', // make blank for using localhost
+	this.envStruct = {
+		'development' = 'dev',
 		'test' = 'tst',
 		'staging' = 'stg'
 	};
 	this.env = 'production';
-	if (len(this.remoteAddr.development)>0) {
-		for(i=1;i<=listlen(structkeylist(this.remoteAddr));i++) 
-			if ( listfirst(CGI.HTTP_HOST,'.') == evaluate('this.remoteAddr.#listgetat(structkeylist(this.remoteAddr),i)#') )
-				this.env = listgetat(structkeylist(this.remoteAddr),i);
-	} else {
-		if (IsLocalHost(CGI.REMOTE_ADDR))
-			this.env = 'development';
-	}	
+	this.nameBeforeEnv = 'cf-recursive-bootstrap-menu-'; // please change to your folder name 
+	for(i=1;i<=listlen(structkeylist(this.envStruct));i++) 
+		if ( rereplacenocase(listlast(this.applicationroot,"/"),this.nameBeforeEnv,'','all') == evaluate('this.envStruct.#listgetat(structkeylist(this.envStruct),i)#') )
+			this.env = listgetat(structkeylist(this.envStruct),i);
 	structinsert(this,this.env,true);
 	
 

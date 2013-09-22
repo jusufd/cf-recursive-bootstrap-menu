@@ -27,19 +27,19 @@ component persistent="true" table="Categories" hint="Product Categories include 
 	/**
 	 * I return true if the name is unique in the same level
 	 */		
-	public struct function isNameUnique(){
+	struct function isNameUnique(){
 		var matches = []; 
 		var result = {issuccess=false, failuremessage="The name '#variables.Name#' has been used." };
 		if (isPersisted()) 
 			if (!isnull(variables.Parents))
-				matches = ORMExecuteQuery("from Category where Id<>:Id and Name=:Name and Parents=:Parents",{ Id=variables.Id, Name=variables.Name, Parents=variables.Parents });
+				matches = ORMExecuteQuery("from Category where Id<>:Id and Name=:Name and Section=:Section and Parents=:Parents",{ Id=variables.Id, Name=variables.Name, Section=variables.Section, Parents=variables.Parents });
 			else 
-				matches = ORMExecuteQuery("from Category where Id<>:Id and Name=:Name and Parents IS NULL",{ Id=variables.Id, Name=variables.Name });
+				matches = ORMExecuteQuery("from Category where Id<>:Id and Name=:Name and Section=:Section and Parents IS NULL",{ Id=variables.Id, Name=variables.Name, Section=variables.Section });
 		else 
 			if (!isnull(variables.Parents))
-				matches = ORMExecuteQuery("from Category where Name=:Name and Parents=:Parents",{ Name=variables.Name, Parents=variables.Parents } );
+				matches = ORMExecuteQuery("from Category where Name=:Name and Section=:Section and Parents=:Parents",{ Name=variables.Name, Section=variables.Section, Parents=variables.Parents } );
 			else 
-				matches = ORMExecuteQuery("from Category where Name=:Name and Parents IS NULL",{ Name=variables.Name } );	
+				matches = ORMExecuteQuery("from Category where Name=:Name and Section=:Section and Parents IS NULL",{ Name=variables.Name, Section=variables.Section } );	
 		if (!ArrayLen(matches)) 
 			result.issuccess = true;
 		return result;
